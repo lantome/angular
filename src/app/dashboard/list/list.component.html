@@ -1,0 +1,10 @@
+<h1 *ngIf="product">You added: {{product?.id}} {{product?.title}}</h1>
+
+<input type="text" placeholder="filter" [(ngModel)]="value">
+
+<div *ngIf="products$ | async as products">
+<app-item *ngFor="let product of products | filter: value; let i = index" [product]="product" (emitterOutput)="outputHandler($event)" ></app-item>
+</div>
+
+<div *ngIf="loading" style="text-align: center">Loading...</div>
+
